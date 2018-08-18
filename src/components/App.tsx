@@ -1,9 +1,12 @@
 import * as React from "react";
+import * as Navbar from "./Navbar";
 
-class App extends React.Component {
-  public render() {
-    return <div className="App">Hello</div>;
-  }
-}
-
-export default App;
+let App: React.StatelessComponent<{}>;
+export default (App = ({ children }) => {
+  return (
+    <>
+      <Navbar.default />
+      {children}
+    </>
+  );
+});
