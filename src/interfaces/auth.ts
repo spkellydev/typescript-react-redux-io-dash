@@ -1,12 +1,8 @@
 import { Action, Dispatch } from "redux";
 
-export interface ISignupUser {
-  email: string;
-  password: string;
-}
-
-export interface ISignupProps {
-  signupUser: (formProps: ISignupUser) => (dispatch: Dispatch) => void;
+export interface IAuthAction extends Action {
+  type: string;
+  payload: string;
 }
 
 export interface IAuthState {
@@ -14,7 +10,11 @@ export interface IAuthState {
   readonly errorMessage: string;
 }
 
-export interface IAuthAction extends Action {
-  type: string;
-  payload: any;
+export interface ISignupProps {
+  signupUser: (formProps: ISignupUser) => (dispatch: Dispatch) => void;
+}
+
+export interface ISignupUser {
+  email: string;
+  password: string;
 }
