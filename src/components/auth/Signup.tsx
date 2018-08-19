@@ -9,13 +9,20 @@ import * as actions from "../../actions";
 export class Signup extends React.Component<
   InjectedFormProps<ISignupUser> & ISignupProps
 > {
+  public static mapStateToProps(state: any) {
+    return { errorMessage: state.auth.errorMessage };
+  }
+
   public onSumbit = (formProps: any): void => {
-    this.props.signupUser(formProps);
+    this.props.signupUser(formProps, () => {
+      this.props.history.push("/dashboard");
+    });
   };
 
   public render() {
+    const { handleSubmit, errorMessage } = this.props;
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSumbit)}>
+      <form onSubmit={handleSubmit(this.onSumbit)}>
         <fieldset>
           <label htmlFor="email">Email</label>
           <Field
@@ -34,6 +41,7 @@ export class Signup extends React.Component<
             component="input"
           />
         </fieldset>
+        <div>{errorMessage}</div>
         <input type="submit" />
       </form>
     );
@@ -42,7 +50,7 @@ export class Signup extends React.Component<
 
 export default compose(
   connect(
-    null,
+    Signup.mapStateToProps,
     actions
   ),
   reduxForm<ISignupUser>({

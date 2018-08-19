@@ -11,7 +11,7 @@ export default function(state: IAuthState = initialState, action: IAuthAction) {
     case AUTH_USER:
       return { ...state, authenicated: action.payload };
     case AUTH_ERROR:
-      return { ...state, authenticated: action.payload };
+      return { ...state, errorMessage: action.payload };
     default:
       return initialState;
   }

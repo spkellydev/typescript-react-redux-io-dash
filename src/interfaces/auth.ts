@@ -1,3 +1,4 @@
+import { RouteComponentProps } from "react-router-dom";
 import { Action, Dispatch } from "redux";
 
 export interface IAuthAction extends Action {
@@ -10,8 +11,12 @@ export interface IAuthState {
   readonly errorMessage: string;
 }
 
-export interface ISignupProps {
-  signupUser: (formProps: ISignupUser) => (dispatch: Dispatch) => void;
+export interface ISignupProps extends RouteComponentProps<any> {
+  signupUser: (
+    formProps: ISignupUser,
+    callback: () => void
+  ) => (dispatch: Dispatch) => void;
+  errorMessage: string;
 }
 
 export interface ISignupUser {
