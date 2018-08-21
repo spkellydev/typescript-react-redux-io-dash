@@ -12,6 +12,7 @@ export interface IAuthState {
 }
 
 export interface ISignupProps extends RouteComponentProps<any> {
+  auth: string;
   signupUser: (
     formProps: ISignupUser,
     callback: () => void

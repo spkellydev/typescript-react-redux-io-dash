@@ -6,9 +6,10 @@ import { applyMiddleware, createStore, Store } from "redux";
 import reduxThunk from "redux-thunk";
 
 import App from "./components/App";
-import Signup from "./components/auth/Signup";
+import Signup from "./components/auth/Signup"; // TODO: move to Views
 import Welcome from "./components/Welcome";
 import reducers from "./reducers";
+import Dashboard from "./views/dashboard/index";
 
 import registerServiceWorker from "./registerServiceWorker";
 
@@ -20,6 +21,7 @@ ReactDOM.render(
       <App>
         <Route path="/" exact={true} component={Welcome} />
         <Route path="/signup" component={Signup} />
+        <Route path="/dashboard" component={Dashboard} />
       </App>
     </BrowserRouter>
   </Provider>,
