@@ -1,16 +1,33 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Nav, Navbar, NavItem } from "react-bootstrap/lib";
 
-export default class Navbar extends React.Component {
+export default class PrimaryNavbar extends React.Component {
   public render() {
     return (
-      <div>
-        <Link to="/">SEO Studio</Link>
-        <Link to="/signup">Signup</Link>
-        <Link to="/signin">Signin</Link>
-        <Link to="/signout">Sign Out</Link>
-        <Link to="/dashboard">Dashboard</Link>
-      </div>
+      <Navbar collapseOnSelect={true}>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href="/">SEO Studio</a>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav>
+            <NavItem eventKey={"signup"} href="/signup">
+              Signup
+            </NavItem>
+            <NavItem eventKey={"signin"} href="/signin">
+              Signin
+            </NavItem>
+            <NavItem eventKey={"signout"} href="/signout">
+              Sign Out
+            </NavItem>
+            <NavItem eventKey={"dashboard"} href="/dashboard">
+              Dashboard
+            </NavItem>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }

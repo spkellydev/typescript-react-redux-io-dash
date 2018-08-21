@@ -6,7 +6,7 @@ import { applyMiddleware, createStore, Store } from "redux";
 import reduxThunk from "redux-thunk";
 
 import App from "./components/App";
-import Signup from "./components/auth/Signup"; // TODO: move to Views
+import Signup from "./components/Auth/Signup"; // TODO: move to Views
 import Welcome from "./components/Welcome";
 import reducers from "./reducers";
 import Dashboard from "./views/dashboard/index";
