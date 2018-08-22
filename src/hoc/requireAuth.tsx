@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import * as actions from "../actions";
 
 export function AuthChild<P extends { history: string[] }>(
   ChildComponent: React.ComponentType<P>
@@ -28,9 +29,13 @@ export function AuthChild<P extends { history: string[] }>(
     }
   }
   // map auth state into ChildComponent
-  function mapStateToProps(state: { auth: { authenticated: boolean } }) {
+  function mapStateToProps(state: any) {
+    console.log(state);
     return { auth: state.auth.authenticated };
   }
   // too explicitly typed
-  return connect(mapStateToProps)(ComposedComponent as any);
+  return connect(
+    mapStateToProps,
+    actions
+  )(ComposedComponent as any);
 }

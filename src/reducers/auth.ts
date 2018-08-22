@@ -2,7 +2,7 @@ import { AUTH_ERROR, AUTH_USER } from "../actions/types";
 import { IAuthAction, IAuthState } from "../interfaces";
 
 const initialState = {
-  authenticated: "",
+  authenticated: localStorage.getItem("seostudio-token") || "",
   errorMessage: ""
 };
 

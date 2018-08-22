@@ -6,15 +6,15 @@ import { ISignupProps, ISignupUser } from "../../interfaces";
 
 import * as actions from "../../actions";
 
-export class Signup extends React.Component<
+class Signin extends React.Component<
   InjectedFormProps<ISignupUser> & ISignupProps
 > {
   public static mapStateToProps(state: any) {
-    return { errorMessage: state.auth.errorMessage };
+    return { auth: state.auth.errorMessage };
   }
 
-  public onSubmit = (formProps: any): void => {
-    this.props.signupUser(formProps, () => {
+  public onSubmit = (formProps: ISignupUser) => {
+    this.props.signinUser(formProps, () => {
       this.props.history.push("/dashboard");
     });
   };
@@ -50,10 +50,10 @@ export class Signup extends React.Component<
 
 export default compose(
   connect(
-    Signup.mapStateToProps,
+    Signin.mapStateToProps,
     actions
   ),
   reduxForm<ISignupUser>({
-    form: "signup"
+    form: "signin"
   })
-)(Signup);
+)(Signin);

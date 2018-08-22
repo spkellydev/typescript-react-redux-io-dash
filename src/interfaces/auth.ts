@@ -13,10 +13,15 @@ export interface IAuthState {
 
 export interface ISignupProps extends RouteComponentProps<any> {
   auth: string;
+  signinUser: (
+    formProps: ISignupUser,
+    callback: () => void
+  ) => (dispatch: Dispatch) => void;
   signupUser: (
     formProps: ISignupUser,
     callback: () => void
   ) => (dispatch: Dispatch) => void;
+  signoutUser: () => void;
   errorMessage: string;
 }
 
