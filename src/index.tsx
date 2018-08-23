@@ -11,12 +11,13 @@ import Signout from "./components/Auth/Signout"; // TODO: move to Views
 import Signup from "./components/Auth/Signup"; // TODO: move to Views
 import { default as Navbar } from "./components/Navbar";
 import Welcome from "./components/Welcome";
+import socket from "./middleware/sockets";
 import reducers from "./reducers";
 import Dashboard from "./views/dashboard/index";
 
 import registerServiceWorker from "./registerServiceWorker";
 let store: Store;
-store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+store = createStore(reducers, {}, applyMiddleware(reduxThunk, socket));
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
