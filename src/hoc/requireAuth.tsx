@@ -30,7 +30,6 @@ export function AuthChild<P extends { history: string[] }>(
   }
   // map auth state into ChildComponent
   function mapStateToProps(state: any) {
-    console.log(state);
     return { auth: state.auth.authenticated };
   }
   // too explicitly typed

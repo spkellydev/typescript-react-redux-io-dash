@@ -6,8 +6,10 @@ import { AuthChild } from "../../hoc/requireAuth";
 export interface ISocketProps extends React.Component<any> {
   auth: string;
   errorMessage: string;
+  sockets: any;
   connectSocket: () => void;
   closeSocket: () => void;
+  sendSocket: () => void;
 }
 
 class Dashboard extends React.Component<ISocketProps> {
@@ -25,13 +27,21 @@ class Dashboard extends React.Component<ISocketProps> {
     this.props.connectSocket();
   }
 
+  public onSend = () => {
+    this.props.sendSocket();
+  };
+
   public onClose = () => {
     this.props.closeSocket();
   };
   public render() {
+    console.log(this.props.sockets);
+
     return (
       <div>
         <h2>Dashboard</h2>
+        <p>{this.props.sockets.message}</p>
+        <button onClick={this.onSend}>Send Message</button>
         <button onClick={this.onClose}>Close Socket</button>
       </div>
     );

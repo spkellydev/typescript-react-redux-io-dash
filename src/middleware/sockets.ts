@@ -24,10 +24,10 @@ export default ({ dispatch }: any) => (next: any) => (
 
       socket.onopen = () => dispatch({ type: WEBSOCKET_OPEN });
       socket.onclose = () => {
-        console.log("disconnect");
         dispatch({ type: WEBSOCKET_CLOSE });
       };
-      socket.onmessage = () => dispatch({ type: WEBSOCKET_MESSAGE });
+      socket.onmessage = event =>
+        dispatch({ payload: event, type: WEBSOCKET_MESSAGE });
       break;
     }
     case WEBSOCKET_SEND: {
